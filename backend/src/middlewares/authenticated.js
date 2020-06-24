@@ -9,6 +9,6 @@ module.exports = {
     if (!req.isAuthenticated()) {
       return next();
     }
-    return res.redirect('/user');
+    return res.redirect('/perfil');
   }
 };

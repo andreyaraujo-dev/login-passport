@@ -8,12 +8,12 @@ const passport = require('passport');
 const routes = express.Router();
 
 routes.post('/login', passport.authenticate('local', {
-  successRedirect: '/user',
+  successRedirect: '/perfil',
   failureRedirect: '/',
 }));
 routes.post('/logout', logoutController);
 
 routes.post('/create', UserController.store);
-routes.get('/user', UserController.show);
+routes.get('/perfil', UserController.show);
 
 module.exports = routes;
