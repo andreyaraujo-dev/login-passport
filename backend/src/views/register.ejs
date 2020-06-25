@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="https://kit.fontawesome.com/fdc7ea6453.js" crossorigin="anonymous"></script>
+  <title>Register</title>
+</head>
+<body>
+  <div class="container">
+    <div class="container-login">
+      <h1>Create your account to</h1>
+      <h2>access the system.</h2>
+      <form action="/create" method="post" class="form-login">
+        <label for="name">Name</label>
+        <input type="text" name="name" id="name" class="form-input">
+        <label for="email">E-mail</label>
+        <input type="email" name="email" id="email" class="form-input">
+        <label for="username">Username</label>
+        <input type="text" name="username" id="username" class="form-input">
+        <label for="password">Password</label>
+        <input type="password" name="password" id="password" class="form-input">
+        <button type="submit" class="form-button">Create account <i class="fas fa-sign-in-alt"></i></button>
+      </form>
+      <div class="row">
+        <a href="/">Already have an account? Sign in.</a>
+      </div>
+      <footer><small>Created and developed by Jacksson Andrey.</small></footer>
+    </div>
+    <div class="container-img-login">
+      <img src="images/passport-login-2.png" alt="Login Passport">
+    </div>
+  </div>
+</body>
+</html>

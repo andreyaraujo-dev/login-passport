@@ -2,31 +2,36 @@ const connection = require('../database/connection');
 const bcryptjs = require('bcryptjs');
 
 module.exports = {
+  index(req, res) {
+    return res.render('register');
+  },
+
   async store(req, res) {
     const { name, email, username, password } = req.body;
 
-    const password_hash = await (bcryptjs.hash(password, 8));
+    const salt = await bcryptjs.genSalt(8);
+    const password_hash = await bcryptjs.hash(password, salt);
 
-    const [id] = await connection('users').insert({
+    await connection('users').insert({
       name,
       email,
       username,
       password: password_hash
     });
 
-    return res.json({id});
+    return res.redirect('/');
   },
 
   async show(req, res) {
-    const userId = '2';
+    const idUser = req.user.id;
     try {
       const user = await connection('users')
         .select(['name', 'email', 'username', 'created_at'])
-        .where('id', userId);
+        .where('id', idUser);
 
       if (!user) return res.status(401).json({message: 'User does not exist'});
 
-      return res.json(user);
+      return res.render('perfil', { user });
     } catch (error) {
       return res.status(401).json({error: 'Error'});
     }
